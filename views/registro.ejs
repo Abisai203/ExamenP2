@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Libros y Autores</title>
+    <link rel="stylesheet" href="/views/Style.css">
+    
+</head>
+<body>
+
+    <h1>Autores</h1>    
+    <form action="/validar" method="POST">
+        <div class="form-group">
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" required>
+        </div>
+        <div class="form-group">
+            <label for="apellido">Apellido:</label>
+            <input type="text" id="apellido" name="apellido" required>
+        </div>
+        <div class="form-group">
+            <label for="fechaNac">Fecha de nacimiento:</label>
+            <input type="text" id="fechaNac" name="fechaNac" required>
+        </div>
+
+    <h1>Libros</h1>
+        <div class="form-group">
+            <label for="titulo">Titulo:</label>
+            <input type="text" id="titulo" name="titulo">
+        </div>
+        <div class="form-group">
+            <label for="fechaP">fecha de publicacion:</label>
+            <input type="text" id="fechaP" name="fechaP">
+        </div>
+        <div class="form-group">
+            <label for="Precio">Precio:</label>
+            <input type="text" id="Precio" name="Precio">
+        </div>
+        <button type="submit">Enviar</button>
+    </form>
+
+
+
+
+
+
+
+    <h2>Actualizar Autor</h2>
+    <form action="/actualizarAutor" method="POST">
+        <div class="form-group">
+            <label for="idAutor">ID del Autor:</label>
+            <input type="number" id="idAutor" name="idAutor" required>
+        </div>
+        <div class="form-group">
+            <label for="nombreActualizar">Nuevo Nombre:</label>
+            <input type="text" id="nombreActualizar" name="nombreActualizar">
+        </div>
+        <div class="form-group">
+            <label for="apellidoActualizar">Nuevo Apellido:</label>
+            <input type="text" id="apellidoActualizar" name="apellidoActualizar">
+        </div>
+        <div class="form-group">
+            <label for="fechaNacActualizar">Nueva Fecha de nacimiento:</label>
+            <input type="text" id="fechaNacActualizar" name="fechaNacActualizar">
+        </div>
+        <button type="submit">Actualizar Autor</button>
+    </form>
+
+ 
+
+    <h2>Actualizar Libro</h2>
+    <form action="/actualizarLibro" method="POST">
+        <div class="form-group">
+            <label for="idLibro">ID del Libro:</label>
+            <input type="number" id="idLibro" name="idLibro" required>
+        </div>
+        <div class="form-group">
+            <label for="tituloActualizar">Nuevo Título:</label>
+            <input type="text" id="tituloActualizar" name="tituloActualizar">
+        </div>
+        <div class="form-group">
+            <label for="fechaPActualizar">Nueva fecha de publicación:</label>
+            <input type="text" id="fechaPActualizar" name="fechaPActualizar">
+        </div>
+        <div class="form-group">
+            <label for="PrecioActualizar">Nuevo Precio:</label>
+            <input type="text" id="PrecioActualizar" name="PrecioActualizar">
+        </div>
+        <button type="submit">Actualizar Libro</button>
+    </form>
+
+
+    <h2>Eliminar Autor y sus Libro</h2>
+    <form action="/eliminarAutor" method="POST">
+        <div class="form-group">
+            <label for="idAutorEliminar">ID del Autor a eliminar:</label>
+            <input type="number" id="idAutorEliminar" name="idAutorEliminar" required>
+        </div>
+        <button type="submit">Eliminar Autor</button>
+    </form>
+
+    <h2>Eliminar Libro</h2>
+    <form action="/eliminarLibro" method="POST">
+        <div class="form-group">
+            <label for="idLibroEliminar">ID del Libro a eliminar:</label>
+            <input type="number" id="idLibroEliminar" name="idLibroEliminar" required>
+        </div>
+        <button type="submit">Eliminar Libro</button>
+    </form>
+
+    <script>
+        function validarFormulario(formId) {
+            const form = document.getElementById(formId);
+            const inputs = form.querySelectorAll('input[required]');
+            let isValid = true;
+    
+            inputs.forEach(input => {
+                if (!input.value.trim()) {
+                    isValid = false;
+                    input.classList.add('invalid');
+                } else {
+                    input.classList.remove('invalid');
+                }
+            });
+    
+            if (!isValid) {
+                alert('Por favor, complete todos los campos requeridos.');
+                return false;
+            }
+    
+            return true;
+        }
+        </script>
+
+
+
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        color: #333;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #f4f4f4;
+    }
+    h1, h2 {
+        color: #2c3e50;
+        border-bottom: 2px solid #3498db;
+        padding-bottom: 10px;
+    }
+    form {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        margin-bottom: 30px;
+    }
+    .form-group {
+        margin-bottom: 15px;
+    }
+    label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+    input[type="text"],
+    input[type="number"] {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+    button {
+        background-color: #3498db;
+        color: #fff;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+    button:hover {
+        background-color: #2980b9;
+    }
+    .invalid {
+        border-color: #e74c3c;
+    }
+</style>
+
+
+
+
+</body>
+</html>
+
